@@ -1,0 +1,5 @@
+data
+slurm*
+Rplots.pdf
+logs
+.snakemake/

@@ -1,0 +1,39 @@
+sample_table: "data/SRR_Acc_List.txt" #.txt table retrieved from the SRA metadata, first columns is sample names
+reads: [1,2]
+
+stringtie: "isoforms"  #"isoforms" or "expression_estimation"
+
+Trimmomatic:
+  illuminaclip: "TruSeq3-PE.fa:2:30:10:2:True" #adaptor sequence name as in the Trimmomatic documentation
+
+STAR:
+  genome_fasta: "data/genome/GRCh38.primary_assembly.genome.fa"
+  genome_gtf: "data/genome/gencode.v29.annotation.gtf"
+
+HISAT2:
+  genome_index_hisat: "data/genome_hisat/grch38/genome"
+  genome_gtf_hisat: "data/genome_hisat/Homo_sapiens.GRCh38.111.gtf" 
+
+DESeq:
+  metadata: "data/resources/Metadata.csv" #sample names as rownames, must match SRR names
+  source: "source_name" #column from Metadata.csv indicating sample source eg. cell line name
+  grouping_variable: "genotype" #column from the Metadata.csv indicating how to group samples for analysis
+  replicates: "replicate" #column from the Metadata.csv indicating replicate number
+  design_formula: "~ genotype" #change the design formula accordingly
+  reference_level: "PTPRH Endogenous" #level from the grouping_variable to use as the reference, must match a level in the grouping_variable column
+  contrast_level: "PTPRH wild-type Overexpressed" #level from the grouping_variable to use as the contrast (which you are interested in fiding DEGs), must match a level in the grouping_variable column
+  batch: "batch" #column from the Metadata.csv indicating batch information in numerals (e.g. each number correspond to samples processed in the same batch)
+  fgsea: "data/resources/{dataset}.all.Hs.entrez.gmt" #path to .gmt datasets from MSigDB
+  fgsea_datasets: ["c2", "c5", "c6", "hallmark"] #must match the {dataset} prefix in the fgsea variable
+  org_database: "org.Hs.eg.db" #or org.mm.eg.db
+
+ballgown:
+  metadata: "data/resources/Metadata.csv" #sample names as rownames, must match SRR names
+  source: "source_name" #column from Metadata.csv indicating sample source eg. cell line name
+  replicates: "replicate" #column from the Metadata.csv indicating replicate number
+  grouping_variable: "genotype" #column from the Metadata.csv indicating how to group samples for analysis
+  reference_level: "PTPRH Endogenous" #level from the covariate to use as the reference, must match a level in the grouping_variable column
+  n_plots: 4 #number of plots to generate for top differentially expressed isoforms
+
+
+

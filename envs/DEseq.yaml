@@ -1,0 +1,22 @@
+name: DEseq
+channels:
+  - conda-forge
+  - bioconda
+  - r
+dependencies:
+  - r-base=4.5.3
+  - r-tidyverse
+  - bioconductor-deseq2=1.50.2
+  - bioconductor-sva=3.58.0
+  - bioconductor-fgsea=1.36.2
+  - r-gridextra
+  - r-upsetr
+  - r-rcolorbrewer
+  - r-gplots
+  - bioconductor-complexheatmap
+  - r-circlize
+  - r-ggrepel
+  - bioconductor-annotationdbi
+  - bioconductor-org.hs.eg.db
+  - bioconductor-org.mm.eg.db
+
