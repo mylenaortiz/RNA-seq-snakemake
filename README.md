@@ -9,7 +9,7 @@ All inputs and parameters requested by this pipeline can be found in the config.
 
 The pipeline in the current configuration is designed to reproduce the figures included in the manuscript by Ortiz et al (2026). However, it can be adapted to RNA-seq analysis using any dataset containing FASTQ files. Inputs should be modified in the config.yml accordingly, as described in this file.
 
-To submit this script to the cluster:
+To submit the pipeline to the cluster:
 
 ```bash
 sbatch run_snakemake.sh
