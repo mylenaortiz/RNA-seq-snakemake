@@ -19,7 +19,7 @@ DESeq:
   source: "source_name" #column from Metadata.csv indicating sample source eg. cell line name
   grouping_variable: "genotype" #column from the Metadata.csv indicating how to group samples for analysis
   replicates: "replicate" #column from the Metadata.csv indicating replicate number
-  design_formula: "~ genotype" #change the design formula accordingly
+  design_formula: "~ cell_line + genotype" #change the design formula accordingly
   reference_level: "PTPRH Endogenous" #level from the grouping_variable to use as the reference, must match a level in the grouping_variable column
   contrast_level: "PTPRH wild-type Overexpressed" #level from the grouping_variable to use as the contrast (which you are interested in fiding DEGs), must match a level in the grouping_variable column
   batch: "batch" #column from the Metadata.csv indicating batch information in numerals (e.g. each number correspond to samples processed in the same batch)
